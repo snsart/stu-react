@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello React</title>
+	</head>
+	<body>
+		<div id="app">
+			
+		</div>
+		<script src="../build/react.js"></script>
+		<script src="../build/react-dom.js"></script>
+		<script>
+			/*
+			 *使用组件的getInitialState方法设置默认状态值
+			 * getDefaultProps方法返回一个对象，可以在这个对象上设置默认属性的值
+			 * */
+			
+			var TextAreaCounter=React.createClass({
+				
+				propTypes:{
+					text:React.PropTypes.string,
+				},
+				
+				getDefaultProps:function(){
+					return{
+						text:"",
+					}
+				},
+				
+				/*初始化状态*/
+				getInitialState:function(){
+					return{
+						text:this.props.text,
+					};
+				},
+				
+				/*改变状态接口*/
+				_textChange:function(ev){
+					this.setState({
+						text:ev.target.value,
+					});
+				},
+				
+				render:function(){
+					return React.DOM.div(null,
+						React.DOM.textarea({
+							value:this.state.text,
+							onChange:this._textChange,
+						}),
+						React.DOM.h3(
+							null,this.state.text.length
+						)
+					);
+				}
+			})
+			
+			ReactDOM.render(
+				React.createElement(TextAreaCounter,{text:"Bobb"}),//为组件添加属性;
+				document.getElementById("app")
+			)
+		</script>
+	</body>
+</html>

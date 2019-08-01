@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello React</title>
+	</head>
+	<body>
+		<div id="app">
+			
+		</div>
+		<script src="../build/react.js"></script>
+		<script src="../build/react-dom.js"></script>
+		<script>
+			/*
+			 *自定义组件类包括：
+			 * 1. 属性(可选)
+			 * 2. 方法(可选)
+			 * 3. render方法(必选)
+			 * */
+			
+			var Component=React.createClass({
+				render:function(){
+					return React.DOM.span(null,"I'm so custom");
+				}
+			})
+			
+			ReactDOM.render(
+				React.createElement(Component),//创建组件“实例”;
+				document.getElementById("app")
+			)
+		</script>
+	</body>
+</html>

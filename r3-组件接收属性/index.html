@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello React</title>
+	</head>
+	<body>
+		<div id="app">
+			
+		</div>
+		<script src="../build/react.js"></script>
+		<script src="../build/react-dom.js"></script>
+		<script>
+			/*
+			 *组件接收属性
+			 * this.props+属性名
+			 * this.props是只读属性
+			 * */
+			
+			/*用组件的propTypes属性声明组件需要接收的属性列表及对应类型
+			 *
+			 * */
+			
+			var Component=React.createClass({
+				
+				propTypes:{
+					name:React.PropTypes.string.isRequired//声明name属性是字符串类型并且是必需的
+				}
+				
+				render:function(){
+					return React.DOM.span(null,"I'm "+this.props.name);
+				}
+			})
+			
+			ReactDOM.render(
+				React.createElement(Component,{name:"xiaoming"}),//为组件添加属性;
+				document.getElementById("app")
+			)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello React</title>
+	</head>
+	<body>
+		<div id="app">
+			
+		</div>
+		<script src="../build/react.js"></script>
+		<script src="../build/react-dom.js"></script>
+		<script>
+			/*
+			 * 可以通过使用生命周期方法监听组件的改变。
+			 * */
+			var TextAreaCounter=React.createClass({
+				
+				_log:function(methodName,args){
+					console.log(methodName,args);
+				},
+				
+				//在组件的props或state发生改变后，render()方法执行前调用
+				componentWillUpdate:function(){
+					this._log('componentWillUpdate',arguments);
+				},
+				
+				//在render()函数执行完毕，且更新的组件同步到DOM后立即调用
+				componentDidUpdate:function(){
+					this._log('componentDidUpdate',arguments);
+				},
+				
+				//在新节点插入DOM结构之前触发
+				componentWillMount:function(){
+					this._log('componentWillMount',arguments);
+				},
+				
+				//在新节点插入DOM结构之后触发
+				componentDidMount:function(){
+					this._log('componentDidMount',arguments);
+				},
+				
+				//在组件从Dom中移除时触发
+				componentWillUnMount:function(){
+					this._log('componentWillUnMount',arguments);
+				},
+				
+				//在componentWillUpdate()之前触发，给你一个机会返回false以取消更新组件
+				shouldComponentUpdate:function(){
+					this._log('shouldComponentUpdate',arguments);
+					return false;
+				},
+				
+				propTypes:{
+					text:React.PropTypes.string,
+				},
+				
+				getDefaultProps:function(){
+					return{
+						text:"",
+					}
+				},
+				
+				/*初始化状态*/
+				getInitialState:function(){
+					return{
+						text:this.props.text,
+					};
+				},
+				
+				/*改变状态接口*/
+				_textChange:function(ev){
+					this.setState({
+						text:ev.target.value,
+					});
+				},
+				
+				render:function(){
+					return React.DOM.div(null,
+						React.DOM.textarea({
+							value:this.state.text,
+							onChange:this._textChange,
+						}),
+						React.DOM.h3(
+							null,this.state.text.length
+						)
+					);
+				}
+			})
+			
+			ReactDOM.render(
+				React.createElement(TextAreaCounter,{text:"Bobb"}),//为组件添加属性;
+				document.getElementById("app")
+			)
+		</script>
+	</body>
+</html>
