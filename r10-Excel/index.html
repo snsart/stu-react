@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello React</title>
+	</head>
+	<body>
+		<div id="app">
+			
+		</div>
+		<script src="../build/react.js"></script>
+		<script src="../build/react-dom.js"></script>
+		<script>
+			
+			var heaaders=["book","Author","language","published","sales"];
+			var data=[
+				["The Bible","various","Biblical Hebrew, Biblical Aramaic",  "Greek	ancient","4 billion"],
+				["The Little Red Book","Mao Zedong","Standard Chinese","1964–1976","820 million"],
+				["The Quran Muhammad","Classical Arabic","7th century","AD","800 million"],
+				["Chairman Mao's Poems","Mao Zedong","Standard Chinese","1966","400 million"],
+				["The Book of Mormon","Joseph Smith","English","1830","150 million"],
+				["Sophie's World (Sofies verden)","Jostein Gaarder","Norwegian","1991","40 million"],
+				["Flowers in the Attic","V. C. Andrews","English","1979","40 million"]
+			]
+			
+			var Excel=React.createClass({
+				displayName:"Excel",
+				
+				/*数据验证*/
+				propTypes:{
+					headers:React.PropTypes.arrayOf(
+						React.PropTypes.string
+					),
+					initialData:React.PropTypes.arrayOf(
+						React.PropTypes.arrayOf(
+							React.PropTypes.string
+						)
+					)
+				},
+				
+				getInitialState:function(){
+					return {data:this.props.initialData};
+				},
+				
+				_sort:function(e){
+					var column=e.target.cellIndex;
+					var data=this.state.data.slice();
+					data.sort(function(a,b){
+						return a[column]>b[column]?1:-1;
+					});
+					this.setState({
+						data:data,
+					});
+				},
+				
+				render:function(){
+					return(
+						React.DOM.table(null,
+							React.DOM.thead({onClick:this._sort},
+								React.DOM.tr(null,
+									this.props.headers.map(function(title,id){
+										return React.DOM.th({key:id},title);
+									})
+								)
+							),
+						
+							React.DOM.tbody(null,
+								this.state.data.map(function(row,idx){
+									return (
+										React.DOM.tr({key:idx},
+											row.map(function(cell,idx){
+												return React.DOM.td({key:idx},cell);
+											})
+										)
+									)
+								})
+							)	
+						)
+					)
+				}
+			})
+			
+			ReactDOM.render(
+				React.createElement(Excel,{headers:heaaders,initialData:data,}),//为组件添加属性;
+				document.getElementById("app")
+			)
+		</script>
+	</body>
+</html>
