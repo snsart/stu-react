@@ -13,6 +13,8 @@
 		<script>
 			/*
 			 * 可以通过使用生命周期方法监听组件的改变。
+			 * will:事件发生之前调用
+			 * did:事件发生之后调用
 			 * */
 			var TextAreaCounter=React.createClass({
 				
@@ -40,7 +42,7 @@
 					this._log('componentDidMount',arguments);
 				},
 				
-				//在组件从Dom中移除时触发
+				//在组件将要从从Dom中移除时触发
 				componentWillUnMount:function(){
 					this._log('componentWillUnMount',arguments);
 				},
