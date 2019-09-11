@@ -205,7 +205,7 @@ _reactDom2.default.render(_react2.default.createElement(
 	'h1',
 	null,
 	_react2.default.createElement(_Logo2.default, null),
-	' Welcome to react!'
+	' Welcome to react!!!'
 ), document.getElementById("pad"));
 },{"./components/Logo":3,"react":12,"react-dom":9}],3:[function(require,module,exports){
 "use strict";
