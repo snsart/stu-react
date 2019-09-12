@@ -18,5 +18,5 @@ _reactDom2.default.render(_react2.default.createElement(
 	'h1',
 	null,
 	_react2.default.createElement(_Logo2.default, null),
-	' Welcome to react!'
+	' Welcome to react!!'
 ), document.getElementById("pad"));

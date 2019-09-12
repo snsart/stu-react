@@ -25,54 +25,94 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*React.PropTypes 已经从React v15.5迁移了，所以现在用prop-types库
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                npm install prop-types -S*/
 
-var Suggest = function (_Component) {
-	_inherits(Suggest, _Component);
+var Rating = function (_Component) {
+	_inherits(Rating, _Component);
 
-	function Suggest(props) {
-		_classCallCheck(this, Suggest);
+	function Rating(props) {
+		_classCallCheck(this, Rating);
 
-		var _this = _possibleConstructorReturn(this, (Suggest.__proto__ || Object.getPrototypeOf(Suggest)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Rating.__proto__ || Object.getPrototypeOf(Rating)).call(this, props));
 
 		_this.state = {
-			value: props.defaultValue
+			rating: props.defaultValue,
+			tmpRating: props.defaultValue
 		};
 		return _this;
 	}
 
-	_createClass(Suggest, [{
+	_createClass(Rating, [{
 		key: 'getValue',
 		value: function getValue() {
-			return this.state.value;
+			return this.state.rating;
+		}
+	}, {
+		key: 'setTemp',
+		value: function setTemp(rating) {
+			this.setState({
+				tmpRating: rating
+			});
+		}
+	}, {
+		key: 'setRating',
+		value: function setRating(rating) {
+			this.setState({
+				tmpRating: rating,
+				rating: rating
+			});
+		}
+	}, {
+		key: 'reset',
+		value: function reset() {
+			this.setTemp(this.state.rating);
+		}
+
+		/*生命周期函数:响应组件外部的变化*/
+
+	}, {
+		key: 'UNSAFE_componentWillReceiveProps',
+		value: function UNSAFE_componentWillReceiveProps(nextProps) {
+			this.setRating(nextProps.defaultValue);
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this2 = this;
+			var stars = [];
+			for (var i = 1; i <= this.props.max; i++) {
+				stars.push(_react2.default.createElement(
+					'span',
+					{
+						className: i <= this.state.tmpRating ? 'RatingON' : null,
+						key: i,
+						onClick: !this.props.readonly ? this.setRating.bind(this, i) : undefined,
+						onMouseOver: !this.props.readonly ? this.setTemp.bind(this, i) : undefined
+					},
+					'\u2606'
+				));
+			}
 
-			var randomid = Math.random().toString(16).substring(2);
-			var cssclasses = (0, _classnames2.default)('Suggest', this.props.className);
 			return _react2.default.createElement(
 				'div',
-				{ className: cssclasses },
-				_react2.default.createElement('input', { list: randomid, defaultValue: this.props.defaultValue, onChange: function onChange(e) {
-						return _this2.setState({ value: e.target.value });
-					}, id: this.props.id }),
-				_react2.default.createElement(
-					'datalist',
-					{ id: randomid },
-					this.props.options.map(function (item, idx) {
-						return _react2.default.createElement('option', { value: item, key: idx });
-					})
-				)
+				{ className: (0, _classnames2.default)({ 'Rating': true, 'RatingReadonly': this.props.readonly }),
+					onMouseOut: this.reset.bind(this)
+				},
+				stars,
+				this.props.readonly || !this.props.id ? null : _react2.default.createElement('input', { type: 'hidden', id: this.props.id, value: this.state.rating })
 			);
 		}
 	}]);
 
-	return Suggest;
+	return Rating;
 }(_react.Component);
 
-Suggest.propTypes = {
-	options: _propTypes.PropTypes.arrayOf(_propTypes.PropTypes.string)
+Rating.propTypes = {
+	defaultValue: _propTypes.PropTypes.number,
+	readonly: _propTypes.PropTypes.bool,
+	max: _propTypes.PropTypes.number
 };
 
-exports.default = Suggest;
+Rating.defaultProps = {
+	defaultValue: 0,
+	max: 5
+};
+
+exports.default = Rating;

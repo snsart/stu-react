@@ -19,8 +19,9 @@ class Suggest extends Component{
 	
 	render(){
 		const randomid=Math.random().toString(16).substring(2);
+		const cssclasses=classNames('Suggest',this.props.className);
 		return (
-			<div>
+			<div className={cssclasses}>
 				<input list={randomid} defaultValue={this.props.defaultValue} onChange={e=>this.setState({value:e.target.value})} id={this.props.id}/>
 				<datalist id={randomid}>
 					{
