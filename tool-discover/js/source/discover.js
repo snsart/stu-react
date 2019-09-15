@@ -6,6 +6,9 @@ import Button from './components/Button';
 import Suggest from './components/Suggest';
 import Rating from './components/Rating';
 import FormInput from './components/FormInput';
+import Form from './components/Form';
+import Actions from './components/Actions';
+import Dialog from './components/Dialog';
 
 ReactDOM.render(
 	<div style={{padding:'20px'}}>
@@ -91,6 +94,50 @@ ReactDOM.render(
 				</tr>
 			</tbody>
 		</table>
+		
+		
+		<h2>Form</h2>
+		
+		<Form
+		
+			fields={[
+				{
+					label:'Rating',type:'rating',id:'rateme'
+				},
+				{
+					label:'Greetings',id:'freetext'
+				}
+			]}
+			
+			initialData={{
+				rateme:4,freetext:'Hello'
+			}}
+		/>
+		
+		
+		<h2>Actions</h2>
+		
+		<Actions onAction={type=>alert(type)}/>
+		
+		
+		<h2>Dialog</h2>
+		
+		<Dialog
+			header="out-of-the-box example"
+			onAction={type=>alert(type)}
+		>
+			Hello,dialog!
+		</Dialog>
+		
+		<Dialog
+			header="No cancel,custom button"
+			hasCancel={false}
+			confirmLabel="whatever"
+			onAction={type=>alert(type)}
+		>
+			Anthing goes here,see:
+			<Button>A Button</Button>
+		</Dialog>
 		
 	</div>,
 	document.getElementById("pad")
