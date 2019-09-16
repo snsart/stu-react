@@ -212,7 +212,7 @@ var Actions = function Actions(props) {
 			{ tabIndex: '0', className: 'ActionsInfo', title: 'More info',
 				onClick: props.onAction.bind(null, 'info')
 			},
-			'\u2139'
+			'\u2731'
 		),
 		_react2.default.createElement(
 			'span',
@@ -1125,6 +1125,28 @@ _reactDom2.default.render(_react2.default.createElement(
 			null,
 			'A Button'
 		)
+	),
+	_react2.default.createElement(
+		_Dialog2.default,
+		{
+			header: 'No cancel,custom button',
+			hasCancel: false,
+			confirmLabel: 'whatever',
+			onAction: function onAction(type) {
+				return alert(type);
+			}
+		},
+		_react2.default.createElement(_Form2.default, {
+			fields: [{
+				label: 'Rating', type: 'rating', id: 'rateme'
+			}, {
+				label: 'Greetings', id: 'freetext'
+			}],
+
+			initialData: {
+				rateme: 4, freetext: 'Hello'
+			}
+		})
 	)
 ), document.getElementById("pad"));
 },{"./components/Actions":2,"./components/Button":3,"./components/Dialog":4,"./components/Form":5,"./components/FormInput":6,"./components/Logo":7,"./components/Rating":8,"./components/Suggest":9,"react":26,"react-dom":20}],11:[function(require,module,exports){

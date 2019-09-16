@@ -9,7 +9,7 @@ import {PropTypes} from 'prop-types';
 const Actions=props=><div className="Actions">
 	<span tabIndex="0" className="ActionsInfo" title="More info"
 		onClick={props.onAction.bind(null,'info')}
-	>&#8505;</span>
+	>&#10033;</span>
 	
 	<span tabIndex="0" className="ActionsEdit" title="Edit"
 		onClick={props.onAction.bind(null,'edit')}
