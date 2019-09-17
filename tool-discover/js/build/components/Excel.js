@@ -242,7 +242,7 @@ var Excel = function (_Component) {
 							return _react2.default.createElement(
 								'th',
 								{
-									className: 'schema item.id',
+									className: 'schema-$item.id',
 									key: item.id,
 									onClick: _this2._sort.bind(_this2, item.id)
 								},

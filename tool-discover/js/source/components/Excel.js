@@ -175,7 +175,7 @@ class Excel extends Component{
 								}
 								return(
 									<th
-										className={'schema item.id'}
+										className={'schema-$item.id'}
 										key={item.id}
 										onClick={this._sort.bind(this,item.id)}
 									>{title}</th>
