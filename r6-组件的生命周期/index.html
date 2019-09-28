@@ -50,7 +50,8 @@
 				//在componentWillUpdate()之前触发，给你一个机会返回false以取消更新组件
 				shouldComponentUpdate:function(){
 					this._log('shouldComponentUpdate',arguments);
-					return false;
+					//return false;
+					return true;
 				},
 				
 				propTypes:{

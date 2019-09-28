@@ -1,0 +1,27 @@
+.Rating{
+	cursor: pointer;
+	font-size: 30px;
+	position: relative;
+}
+
+.Rating>span{
+	display: inline-block;
+	position: relative;
+}
+
+.bottom-star{
+	display: inline-block;
+	position: relative;
+}
+
+/*absolute初始位置为它在普通流中本来的位置，所以这里需要设置left为0，让其靠左*/
+.top-star{
+	display: none;
+	position: absolute;
+	color: #FFFF00;
+	left: 0;
+}
+
+.RatingON .top-star{
+	display: inline-block;
+}
