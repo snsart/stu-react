@@ -25,7 +25,7 @@ var Actions = function Actions(props) {
 			{ tabIndex: '0', className: 'ActionsInfo', title: 'More info',
 				onClick: props.onAction.bind(null, 'info')
 			},
-			'\u2139'
+			'\u2731'
 		),
 		_react2.default.createElement(
 			'span',

@@ -289,5 +289,27 @@ _reactDom2.default.render(_react2.default.createElement(
 			null,
 			'A Button'
 		)
+	),
+	_react2.default.createElement(
+		_Dialog2.default,
+		{
+			header: 'No cancel,custom button',
+			hasCancel: false,
+			confirmLabel: 'whatever',
+			onAction: function onAction(type) {
+				return alert(type);
+			}
+		},
+		_react2.default.createElement(_Form2.default, {
+			fields: [{
+				label: 'Rating', type: 'rating', id: 'rateme'
+			}, {
+				label: 'Greetings', id: 'freetext'
+			}],
+
+			initialData: {
+				rateme: 4, freetext: 'Hello'
+			}
+		})
 	)
 ), document.getElementById("pad"));

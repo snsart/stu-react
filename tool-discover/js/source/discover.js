@@ -139,6 +139,28 @@ ReactDOM.render(
 			<Button>A Button</Button>
 		</Dialog>
 		
+		<Dialog
+			header="No cancel,custom button"
+			hasCancel={false}
+			confirmLabel="whatever"
+			onAction={type=>alert(type)}
+		>
+			<Form
+				fields={[
+					{
+						label:'Rating',type:'rating',id:'rateme'
+					},
+					{
+						label:'Greetings',id:'freetext'
+					}
+				]}
+				
+				initialData={{
+					rateme:4,freetext:'Hello'
+				}}
+			/>
+		</Dialog>
+		
 	</div>,
 	document.getElementById("pad")
 );

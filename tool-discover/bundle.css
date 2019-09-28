@@ -1,3 +1,20 @@
+.Actions{
+	cursor: pointer;
+	font-size: 25px;
+}
+.Actions span{
+	display: inline-block;
+	margin: 0 10px;
+	width: 40px;
+	height: 40px;
+	color: #6f001b;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	border:solid #282C34 1px;
+	border-radius: 50%;
+}
+
 .Button{
 	background-color: #6f001b;
 	border-radius: 28px;
@@ -17,6 +34,34 @@
 .Button:hover{
 	transform: scale(1.1);
 }
+.Dialog{
+	width: 400px;
+	margin-bottom: 20px;
+	border-bottom: solid  1px #999999;
+}
+
+.DialogHeader{
+	font-size: 30px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #6f001b;
+	padding: 10px 20px;
+}
+
+.DialogBody{
+	padding: 10px;
+	border-bottom: 1px solid #cccccc;
+}
+
+
+.DialogFooter{
+	padding: 10px 25px;
+	background-color: #cccccc;
+}
+.Form{
+	padding: 15px;
+}
+.Form 
 .Logo{
 	background-image: url(images/react-logo.svg);
 	background-size: cover;
@@ -41,4 +86,13 @@
 html{
 	background: white;
 	font: 16px arial;
+}
+
+input{
+	height: 25px;
+	width: 200px;
+}
+
+textarea{
+	width: 200px;
 }
